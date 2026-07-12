@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Shopping Cart - ShopEase</title>
+
+    <meta
+        name="description"
+        content="View and manage your ShopEase shopping cart."
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* ========================================== */
+        /* SUCCESS REQUEST POPUP */
+        /* ========================================== */
+
+        .request-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.3s ease;
+
+            z-index: 9999;
+        }
+
+        .request-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .request-popup-box {
+            width: 90%;
+            max-width: 400px;
+
+            background: #ffffff;
+
+            padding: 40px 30px;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            transform: scale(0.7);
+            opacity: 0;
+
+            transition: 0.4s ease;
+        }
+
+        .request-popup.active .request-popup-box {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .success-check {
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+            color: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            animation: successBounce 0.6s ease;
+        }
+
+        .success-check svg {
+            width: 42px;
+            height: 42px;
+        }
+
+        .request-popup-box h2 {
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .request-popup-box p {
+            color: #6b7280;
+            margin-bottom: 25px;
+        }
+
+        @keyframes successBounce {
+
+            0% {
+                transform: scale(0);
+            }
+
+            60% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================== -->
+    <!-- HEADER -->
+    <!-- ========================================== -->
+
+    <header class="header">
+
+        <div class="container nav-container">
+
+
+            <a href="index.html" class="logo">
+
+                ShopEase
+
+                <span class="logo-dot"></span>
+
+            </a>
+
+
+            <nav>
+
+                <ul
+                    class="nav-links"
+                    id="navLinks"
+                >
+
+                    <li>
+
+                        <a href="index.html">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="shop.html">
+
+                            Shop
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="index.html#about">
+
+                            About
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <div class="nav-actions">
+
+
+                <a
+                    href="shop.html"
+                    class="nav-btn"
+                    aria-label="Search"
+                >
+
+                    <i data-feather="search"></i>
+
+                </a>
+
+
+                <a
+                    href="login.html"
+                    class="nav-btn"
+                    aria-label="User Account"
+                >
+
+                    <i data-feather="user"></i>
+
+                </a>
+
+
+                <a
+                    href="cart.html"
+                    class="nav-btn"
+                    aria-label="Shopping Cart"
+                >
+
+                    <i data-feather="shopping-cart"></i>
+
+                    <span class="cart-count">
+
+                        0
+
+                    </span>
+
+                </a>
+
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open Navigation Menu"
+                >
+
+                    <i data-feather="menu"></i>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ========================================== -->
+    <!-- MAIN -->
+    <!-- ========================================== -->
+
+    <main>
+
+
+        <section class="cart-section">
+
+
+            <div class="container">
+
+
+                <!-- CART HEADER -->
+
+                <div class="cart-header">
+
+
+                    <span class="hero-tag">
+
+                        YOUR CART
+
+                    </span>
+
+
+                    <h1>
+
+                        Shopping Cart
+
+                    </h1>
+
+
+                    <p>
+
+                        Review your selected products before checkout.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- CART LAYOUT -->
+
+                <div class="cart-layout">
+
+
+                    <!-- CART PRODUCTS -->
+
+                    <div class="cart-products">
+
+
+                        <div id="cartItems"></div>
+
+
+                    </div>
+
+
+
+                    <!-- ORDER SUMMARY -->
+
+                    <aside class="cart-summary">
+
+
+                        <h2>
+
+                            Order Summary
+
+                        </h2>
+
+
+
+                        <div class="summary-row">
+
+
+                            <span>
+
+                                Subtotal
+
+                            </span>
+
+
+                            <span id="subtotal">
+
+                                ₹0.00
+
+                            </span>
+
+
+                        </div>
+
+
+
+                        <div class="summary-row">
+
+
+                            <span>
+
+                                Shipping
+
+                            </span>
+
+
+                            <span id="shipping">
+
+                                Free
+
+                            </span>
+
+
+                        </div>
+
+
+
+                        <div class="summary-divider"></div>
+
+
+
+                        <div class="summary-row summary-total">
+
+
+                            <span>
+
+                                Total
+
+                            </span>
+
+
+                            <span id="total">
+
+                                ₹0.00
+
+                            </span>
+
+
+                        </div>
+
+
+
+                        <!-- CHECKOUT BUTTON -->
+
+                        <button
+                            type="button"
+                            class="btn btn-primary checkout-btn"
+                            id="checkoutBtn"
+                        >
+
+
+                            Proceed to Checkout
+
+
+                            <i data-feather="arrow-right"></i>
+
+
+                        </button>
+
+
+
+                        <a
+                            href="shop.html"
+                            class="continue-shopping"
+                        >
+
+
+                            <i data-feather="arrow-left"></i>
+
+
+                            Continue Shopping
+
+
+                        </a>
+
+
+                    </aside>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ========================================== -->
+    <!-- SUCCESS POPUP -->
+    <!-- ========================================== -->
+
+    <div
+        class="request-popup"
+        id="requestPopup"
+    >
+
+
+        <div class="request-popup-box">
+
+
+            <div class="success-check">
+
+
+                <i data-feather="check"></i>
+
+
+            </div>
+
+
+            <h2>
+
+                Request Sent!
+
+            </h2>
+
+
+            <p>
+
+                Your product request has been sent successfully.
+
+            </p>
+
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                id="closeRequestPopup"
+            >
+
+                Done
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ========================================== -->
+    <!-- FOOTER -->
+    <!-- ========================================== -->
+
+    <footer class="footer">
+
+
+        <div class="container">
+
+
+            <div class="footer-grid">
+
+
+
+                <!-- BRAND -->
+
+                <div class="footer-brand">
+
+
+                    <a
+                        href="index.html"
+                        class="logo"
+                    >
+
+
+                        ShopEase
+
+
+                        <span class="logo-dot"></span>
+
+
+                    </a>
+
+
+                    <p>
+
+                        Discover modern, premium and carefully selected
+                        products designed for your everyday lifestyle.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- SHOP -->
+
+                <div class="footer-column">
+
+
+                    <h4>
+
+                        Shop
+
+                    </h4>
+
+
+                    <ul class="footer-links">
+
+
+                        <li>
+
+                            <a href="shop.html">
+
+                                All Products
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="index.html#featured">
+
+                                New Arrivals
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="index.html#featured">
+
+                                Best Sellers
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+
+
+
+                <!-- ABOUT -->
+
+                <div class="footer-column">
+
+
+                    <h4>
+
+                        About
+
+                    </h4>
+
+
+                    <ul class="footer-links">
+
+
+                        <li>
+
+                            <a href="index.html#about">
+
+                                Our Story
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                Sustainability
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                Careers
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+
+
+
+                <!-- CUSTOMER CARE -->
+
+                <div class="footer-column">
+
+
+                    <h4>
+
+                        Customer Care
+
+                    </h4>
+
+
+                    <ul class="footer-links">
+
+
+                        <li>
+
+                            <a href="#">
+
+                                Contact Us
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                Shipping &amp; Returns
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+
+                            <a href="#">
+
+                                FAQs
+
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- FOOTER BOTTOM -->
+
+            <div class="footer-bottom">
+
+
+                <p>
+
+                    &copy; 2026 ShopEase.
+                    All rights reserved.
+
+                </p>
+
+
+                <div
+                    style="
+                        display: flex;
+                        gap: 16px;
+                    "
+                >
+
+
+                    <a
+                        href="#"
+                        aria-label="Twitter"
+                    >
+
+                        <i data-feather="twitter"></i>
+
+                    </a>
+
+
+                    <a
+                        href="#"
+                        aria-label="Instagram"
+                    >
+
+                        <i data-feather="instagram"></i>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="script.js"></script>
+
+
+    <!-- POPUP CLOSE -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const closeRequestPopup =
+                    document.getElementById(
+                        "closeRequestPopup"
+                    );
+
+                const requestPopup =
+                    document.getElementById(
+                        "requestPopup"
+                    );
+
+
+                if (closeRequestPopup) {
+
+                    closeRequestPopup.addEventListener(
+                        "click",
+                        () => {
+
+                            requestPopup.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

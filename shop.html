@@ -1,0 +1,586 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shop - ShopEase</title>
+
+    <meta name="description"
+        content="Explore modern and premium products at ShopEase.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                ShopEase
+                <span class="logo-dot"></span>
+            </a>
+
+            <nav>
+
+                <ul class="nav-links" id="navLinks">
+
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="shop.html" class="active">Shop</a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#about">About</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="nav-actions">
+
+                <a href="#" class="nav-btn" id="searchBtn" aria-label="Search">
+                    <i data-feather="search"></i>
+                </a>
+
+                <a href="login.html" class="nav-btn" aria-label="User Account">
+                    <i data-feather="user"></i>
+                </a>
+
+                <a href="cart.html" class="nav-btn" id="cartBtn" aria-label="Shopping Cart">
+
+                    <i data-feather="shopping-cart"></i>
+
+                    <span class="cart-count">
+                        0
+                    </span>
+
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open Navigation Menu">
+
+                    <i data-feather="menu"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <section class="shop-section">
+
+            <div class="container">
+
+                <div style="text-align:center; margin-bottom:50px;">
+
+                    <span class="hero-tag">
+                        OUR COLLECTION
+                    </span>
+
+                    <h1 style="font-size:3rem; margin-bottom:15px;">
+                        Shop All Products
+                    </h1>
+
+                    <p style="color:var(--text-secondary); max-width:600px; margin:auto;">
+                        Discover our carefully selected collection of modern,
+                        stylish and useful products for your everyday lifestyle.
+                    </p>
+
+                </div>
+
+                <div class="shop-layout">
+
+                    <aside class="filters-sidebar">
+
+                        <div class="filter-group">
+
+                            <h3>Categories</h3>
+
+                            <ul class="filter-options">
+
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        Lamps
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        Bags
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        Tech
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        Home
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        Accessories
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        Home & Fragrance
+                                    </label>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <div class="filter-group">
+
+                            <h3>Price Range</h3>
+
+                            <ul class="filter-options">
+
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        Under ₹200
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        ₹200 - ₹500
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        <input type="checkbox">
+                                        ₹500 - ₹1000
+                                    </label>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </aside>
+
+                    <div class="product-grid">
+
+                        <article class="product-card">
+
+                            <div class="product-img-wrapper">
+
+                                <span class="product-badge">
+                                    New
+                                </span>
+
+                                <img
+                                    src="image/lamp.jpg"
+                                    alt="Minimalist Table Lamp"
+                                    class="product-img">
+
+                            </div>
+
+                            <div class="product-info">
+
+                                <span class="product-category">
+                                    Lamps
+                                </span>
+
+                                <h3 class="product-title">
+                                    Minimalist Table Lamp
+                                </h3>
+
+                                <div class="product-footer">
+
+                                    <span class="product-price">
+                                        ₹899.00
+                                    </span>
+
+                                    <button
+                                        class="add-to-cart-btn"
+                                        aria-label="Add Lamp to Cart">
+
+                                        <i data-feather="plus"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <article class="product-card">
+
+                            <div class="product-img-wrapper">
+
+                                <img
+                                    src="image/backpack.jpg"
+                                    alt="Modern Everyday Backpack"
+                                    class="product-img">
+
+                            </div>
+
+                            <div class="product-info">
+
+                                <span class="product-category">
+                                    Bags
+                                </span>
+
+                                <h3 class="product-title">
+                                    Modern Everyday Backpack
+                                </h3>
+
+                                <div class="product-footer">
+
+                                    <span class="product-price">
+                                        ₹599.00
+                                    </span>
+
+                                    <button
+                                        class="add-to-cart-btn"
+                                        aria-label="Add Backpack to Cart">
+
+                                        <i data-feather="plus"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <article class="product-card">
+
+                            <div class="product-img-wrapper">
+
+                                <img
+                                    src="image/charging-pad.jpg"
+                                    alt="Wireless Charging Pad"
+                                    class="product-img">
+
+                            </div>
+
+                            <div class="product-info">
+
+                                <span class="product-category">
+                                    Tech
+                                </span>
+
+                                <h3 class="product-title">
+                                    Wireless Charging Pad
+                                </h3>
+
+                                <div class="product-footer">
+
+                                    <span class="product-price">
+                                        ₹799.00
+                                    </span>
+
+                                    <button
+                                        class="add-to-cart-btn"
+                                        aria-label="Add Charging Pad to Cart">
+
+                                        <i data-feather="plus"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <article class="product-card">
+
+                            <div class="product-img-wrapper">
+
+                                <span class="product-badge">
+                                    Popular
+                                </span>
+
+                                <img
+                                    src="image/glass.jpg"
+                                    alt="Premium Glass Bottle Set"
+                                    class="product-img">
+
+                            </div>
+
+                            <div class="product-info">
+
+                                <span class="product-category">
+                                    Home
+                                </span>
+
+                                <h3 class="product-title">
+                                    Premium Glass Bottle Set
+                                </h3>
+
+                                <div class="product-footer">
+
+                                    <span class="product-price">
+                                        ₹899.00
+                                    </span>
+
+                                    <button
+                                        class="add-to-cart-btn"
+                                        aria-label="Add Glass Bottle Set to Cart">
+
+                                        <i data-feather="plus"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <article class="product-card">
+
+                            <div class="product-img-wrapper">
+
+                                <img
+                                    src="image/wallet.jpg"
+                                    alt="Premium Leather Wallet"
+                                    class="product-img">
+
+                            </div>
+
+                            <div class="product-info">
+
+                                <span class="product-category">
+                                    Accessories
+                                </span>
+
+                                <h3 class="product-title">
+                                    Premium Leather Wallet
+                                </h3>
+
+                                <div class="product-footer">
+
+                                    <span class="product-price">
+                                        ₹299.00
+                                    </span>
+
+                                    <button
+                                        class="add-to-cart-btn"
+                                        aria-label="Add Wallet to Cart">
+
+                                        <i data-feather="plus"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <article class="product-card">
+
+                            <div class="product-img-wrapper">
+                                <img
+                                    src="image/agarbati.png"
+                                    alt="Incense Sticks (Agarbatti)"
+                                    class="product-img">
+                            
+
+                                <div class="product-img-placeholder">
+
+                                    <i data-feather="image"></i>
+
+                                </div>
+
+                            </div>
+
+                            <div class="product-info">
+
+                                <span class="product-category">
+                                    Home & Fragrance
+                                </span>
+
+                                <h3 class="product-title">
+                                    Incense Sticks (Agarbatti)
+                                </h3>
+
+                                <div class="product-footer">
+
+                                    <span class="product-price">
+                                        ₹199.00
+                                    </span>
+
+                                    <button
+                                        class="add-to-cart-btn"
+                                        aria-label="Add Incense Sticks to Cart">
+
+                                        <i data-feather="plus"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <a href="index.html" class="logo">
+                        ShopEase
+                        <span class="logo-dot"></span>
+                    </a>
+
+                    <p>
+                        Discover modern, premium and carefully selected
+                        products designed for your everyday lifestyle.
+                    </p>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h4>Shop</h4>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="shop.html">All Products</a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#featured">New Arrivals</a>
+                        </li>
+
+                        <li>
+                            <a href="index.html#featured">Best Sellers</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h4>About</h4>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="index.html#about">Our Story</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Sustainability</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Careers</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h4>Customer Care</h4>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="#">Contact Us</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Shipping & Returns</a>
+                        </li>
+
+                        <li>
+                            <a href="#">FAQs</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; 2026 ShopEase. All rights reserved.
+                </p>
+
+                <div style="display:flex; gap:16px;">
+
+                    <a href="#" aria-label="Twitter">
+                        <i data-feather="twitter"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i data-feather="instagram"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
